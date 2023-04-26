@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Birthday Party Questions</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- UNPKG -->
+    <script src="https://unpkg.com/fireworks-js@2.9.0/dist/index.umd.js"></script>
+  </head>
+  <body>
+    <!--
+    <script>
+        const con = document.body;
+        const fire = new Fireworks.default(con);
+        fire.start();
+    </script>
+    -->
+    <h1>Birthday Party Questions</h1>
+    <p>Answer the following questions:</p>
+    <form id="form1">
+      <label for="answer1">What is the capital city of France?</label>
+      <input type="text" id="answer1" name="answer1"><br><br>
+      <input type="button" value="Submit Answer 1" onclick="submitAnswer1()">
+      <div id="result1"></div>
+    </form>
+    <form id="form2">
+      <label for="answer2">What is the largest planet in our solar system?</label>
+      <input type="text" id="answer2" name="answer2"><br><br>
+      <input type="button" value="Submit Answer 2" onclick="submitAnswer2()">
+      <div id="result2"></div>
+    </form>
+    <script>
+      const con = document.querySelector('body');
+      const fire = new Fireworks.default(con);
+      
+      async function test() {
+        console.log('start timer');
+        await new Promise(resolve => setTimeout(resolve, 30000));
+        console.log('after 15 second');
+        fire.stop();
+      }
+
+function showSuccess() {
+        fire.start();
+        //const audio = new Audio('success.mp3');
+        //audio.play();
+        test();
+    
+      }
+
+      function submitAnswer1() {
+        const answer1 = document.getElementById('answer1').value;
+        const result1 = document.getElementById('result1');
+        if (answer1.toLowerCase() === 'paris') {
+          result1.innerHTML = 'Correct answer!';
+          result1.style.color = 'green';
+          showSuccess();
+        } else {
+          result1.innerHTML = 'Wrong answer, try again!';
+          result1.style.color = 'red';
+        }
+        document.getElementById('answer1').value = '';
+      }
+
+      function submitAnswer2() {
+        const answer2 = document.getElementById('answer2').value;
+        const result2 = document.getElementById('result2');
+        if (answer2.toLowerCase() === 'jupiter') {
+          result2.innerHTML = 'Correct answer!';
+          result2.style.color = 'green';
+          showSuccess();
+        } else {
+          result2.innerHTML = 'Wrong answer, try again!';
+          result2.style.color = 'red';
+        }
+        document.getElementById('answer2').value = '';
+      }
+    </script>
+  </body>
+</html>
