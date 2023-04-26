@@ -1,32 +1,90 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Birthday Party Questions</title>
+    <title>Födelsedagskalas</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- UNPKG -->
     <script src="https://unpkg.com/fireworks-js@2.9.0/dist/index.umd.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      p {
+        text-align: center;
+        color: #555;
+      }
+
+      form {
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="button"] {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      #result1,
+      #result2 {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+
+      #result1 {
+        color: green;
+      }
+
+      #result2 {
+        color: red;
+      }
+    </style>
   </head>
   <body>
-    <!--
-    <script>
-        const con = document.body;
-        const fire = new Fireworks.default(con);
-        fire.start();
-    </script>
-    -->
-    <h1>Birthday Party Questions</h1>
-    <p>Answer the following questions:</p>
+    <h1>Födelsedag - Uppdragsfrågor</h1>
+    <p>Svara på följande frågor:</p>
     <form id="form1">
-      <label for="answer1">What is the capital city of France?</label>
+      <label for="answer1">Vad är svaret på uppdrag 2?</label>
       <input type="text" id="answer1" name="answer1"><br><br>
-      <input type="button" value="Submit Answer 1" onclick="submitAnswer1()">
+      <input type="button" value="Svara på uppdrag 2" onclick="submitAnswer1()">
       <div id="result1"></div>
     </form>
     <form id="form2">
-      <label for="answer2">What is the largest planet in our solar system?</label>
+      <label for="answer2">Vad är svaret på uppdrag 3?</label>
       <input type="text" id="answer2" name="answer2"><br><br>
-      <input type="button" value="Submit Answer 2" onclick="submitAnswer2()">
+      <input type="button" value="Svara på uppdrag 3" onclick="submitAnswer2()">
       <div id="result2"></div>
     </form>
     <script>
@@ -34,29 +92,28 @@
       const fire = new Fireworks.default(con);
       
       async function test() {
-        console.log('start timer');
+        //console.log('start timer');
         await new Promise(resolve => setTimeout(resolve, 30000));
-        console.log('after 15 second');
+        //console.log('after 15 second');
         fire.stop();
       }
 
-function showSuccess() {
+      function showSuccess() {
         fire.start();
         //const audio = new Audio('success.mp3');
         //audio.play();
         test();
-    
       }
 
       function submitAnswer1() {
         const answer1 = document.getElementById('answer1').value;
         const result1 = document.getElementById('result1');
         if (answer1.toLowerCase() === 'paris') {
-          result1.innerHTML = 'Correct answer!';
+          result1.innerHTML = 'Rätt svar!';
           result1.style.color = 'green';
           showSuccess();
         } else {
-          result1.innerHTML = 'Wrong answer, try again!';
+          result1.innerHTML = 'Tyvärr det är fel svar, försök igen.';
           result1.style.color = 'red';
         }
         document.getElementById('answer1').value = '';
@@ -66,11 +123,11 @@ function showSuccess() {
         const answer2 = document.getElementById('answer2').value;
         const result2 = document.getElementById('result2');
         if (answer2.toLowerCase() === 'jupiter') {
-          result2.innerHTML = 'Correct answer!';
+          result2.innerHTML = 'Rätt svar!';
           result2.style.color = 'green';
           showSuccess();
         } else {
-          result2.innerHTML = 'Wrong answer, try again!';
+          result2.innerHTML = 'Tvärr det är fel svar, försök igen.';
           result2.style.color = 'red';
         }
         document.getElementById('answer2').value = '';
