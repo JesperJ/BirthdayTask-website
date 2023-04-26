@@ -70,39 +70,70 @@
       #result2 {
         color: red;
       }
+
+      #code-box {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px;
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+
+      .pretty-link {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
     <h1>Födelsedag - Uppdragsfrågor</h1>
-    <p>Svara på följande frågor:</p>
+    <p>
+      <a href="#" class="pretty-link" onclick="showUppdrag2()">Uppdrag 2</a> - 
+      <a href="#" class="pretty-link" onclick="showUppdrag3()">Uppdrag 3</a>
+    </p>
     <form id="form1">
       <label for="answer1">Vad är svaret på uppdrag 2?</label>
-      <input type="text" id="answer1" name="answer1"><br><br>
+      <input type="text" id="answer1" name="answer1" onkeypress="handleKeyPress(event, submitAnswer1)"><br><br>
       <input type="button" value="Svara på uppdrag 2" onclick="submitAnswer1()">
       <div id="result1"></div>
     </form>
     <form id="form2">
       <label for="answer2">Vad är svaret på uppdrag 3?</label>
-      <input type="text" id="answer2" name="answer2"><br><br>
+      <input type="text" id="answer2" name="answer2" onkeypress="handleKeyPress(event, submitAnswer2)"><br><br>
       <input type="button" value="Svara på uppdrag 3" onclick="submitAnswer2()">
       <div id="result2"></div>
     </form>
+    <div id="code-box"></div>
+    
     <script>
+      document.getElementById('form2').style.display = 'none';
+      document.getElementById('code-box').style.display = 'none';
       const con = document.querySelector('body');
       const fire = new Fireworks.default(con);
       
-      async function test() {
-        //console.log('start timer');
-        await new Promise(resolve => setTimeout(resolve, 30000));
-        //console.log('after 15 second');
+      function showUppdrag2(params) {
+        document.getElementById('form1').style.display = '';
+        document.getElementById('form2').style.display = 'none';
+        document.getElementById('code-box').style.display = 'none';
+        const result1 = document.getElementById('result1');
+        result1.innerHTML = '';
         fire.stop();
       }
-
+      function showUppdrag3(params) {
+        document.getElementById('form1').style.display = 'none';
+        document.getElementById('form2').style.display = '';
+        document.getElementById('code-box').style.display = 'none';
+        const result2 = document.getElementById('result2');
+        result2.innerHTML = '';
+        fire.stop();
+      }
       function showSuccess() {
         fire.start();
         //const audio = new Audio('success.mp3');
         //audio.play();
-        test();
       }
 
       function submitAnswer1() {
@@ -111,6 +142,9 @@
         if (answer1.toLowerCase() === 'paris') {
           result1.innerHTML = 'Rätt svar!';
           result1.style.color = 'green';
+          document.getElementById('code-box').innerHTML = '<h1>Siffra nummer två är 3</h1>';
+          document.getElementById('code-box').style.display = '';
+          document.getElementById('form1').style.display = 'none';
           showSuccess();
         } else {
           result1.innerHTML = 'Tyvärr det är fel svar, försök igen.';
@@ -125,12 +159,22 @@
         if (answer2.toLowerCase() === 'jupiter') {
           result2.innerHTML = 'Rätt svar!';
           result2.style.color = 'green';
+          document.getElementById('form2').style.display = 'none';
+          document.getElementById('code-box').innerHTML = '<h1>Siffra nummer tre är 5</h1>';
+          document.getElementById('code-box').style.display = '';
           showSuccess();
         } else {
           result2.innerHTML = 'Tvärr det är fel svar, försök igen.';
           result2.style.color = 'red';
         }
-        document.getElementById('answer2').value = '';
+        document.getElementById('answer2').value = ''; 
+      }
+
+      function handleKeyPress(event, submitFunction) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          submitFunction();
+        }
       }
     </script>
   </body>
