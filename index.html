@@ -89,7 +89,7 @@
     </style>
   </head>
   <body>
-    <h1>Födelsedag - Uppdragsfrågor</h1>
+    <h1>Isabelles skattjakt!</h1>
     <p>
       <a href="#" class="pretty-link" onclick="showUppdrag2()">Uppdrag 2</a> - 
       <a href="#" class="pretty-link" onclick="showUppdrag3()">Uppdrag 3</a>
@@ -139,10 +139,10 @@
       function submitAnswer1() {
         const answer1 = document.getElementById('answer1').value;
         const result1 = document.getElementById('result1');
-        if (answer1.toLowerCase() === 'paris') {
+        if (answer1.toLowerCase() === '141') {
           result1.innerHTML = 'Rätt svar!';
           result1.style.color = 'green';
-          document.getElementById('code-box').innerHTML = '<h1>Siffra nummer två är 3</h1>';
+          document.getElementById('code-box').innerHTML = '<h1>Bra jobbat!<br>Första siffran i koden är 6</h1>';
           document.getElementById('code-box').style.display = '';
           document.getElementById('form1').style.display = 'none';
           showSuccess();
@@ -156,11 +156,11 @@
       function submitAnswer2() {
         const answer2 = document.getElementById('answer2').value;
         const result2 = document.getElementById('result2');
-        if (answer2.toLowerCase() === 'jupiter') {
+        if (answer2.toLowerCase() === 'solen') {
           result2.innerHTML = 'Rätt svar!';
           result2.style.color = 'green';
           document.getElementById('form2').style.display = 'none';
-          document.getElementById('code-box').innerHTML = '<h1>Siffra nummer tre är 5</h1>';
+          document.getElementById('code-box').innerHTML = '<h1>Bra jobbat!<br>Andra siffran i koden är 8</h1>';
           document.getElementById('code-box').style.display = '';
           showSuccess();
         } else {
